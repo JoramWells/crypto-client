@@ -1,9 +1,9 @@
-import React from 'react';
+import {Nav, Navbar} from 'react-bootstrap';
 
-const Navbar = () => {
+const NavBar = () => {
   return (
 
-    <nav className="navbar navbar-expand-lg navbar-dark px-5 py-2 py-lg-0">
+    <Navbar expand='lg' bg='dark' sticky='top' className="px-5 py-2 py-lg-0">
       <a href="index.html" className="navbar-brand p-0">
         <h1 className="m-0">Crypto Investment Podium</h1>
       </a>
@@ -12,21 +12,22 @@ const Navbar = () => {
         <span className="fa fa-bars" />
       </button>
       <div className="collapse navbar-collapse" id="navbarCollapse">
-        <div className="navbar-nav ms-auto py-0">
+
+        <Nav className='navbar-nav ms-auto'>
           <a href="index.html" className="nav-item
           nav-link active"><i className="fa fa-home" /></a>
-          <a href="www" className="nav-item nav-link">About Us</a>
-          <a href="www" className="nav-item nav-link">How to Join</a>
-          <a href="www" className="nav-item nav-link">Contact</a>
-        </div>
+          <Nav.Link href='#acion1'>About Us</Nav.Link>
+          <Nav.Link href='#acion1'>How to Join</Nav.Link>
+          <Nav.Link href='#acion1'>Contact</Nav.Link>
+        </Nav>
         <button type="button" className="btn text-primary ms-3"
           data-bs-toggle="modal" data-bs-target="#searchModal">
           <i className="fa fa-search" /></button>
         <a href="login.html" className="btn btn-primary
         py-2 px-4 ms-3"><i className="fa fa-user"> </i> Join Now</a>
       </div>
-    </nav>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default NavBar;

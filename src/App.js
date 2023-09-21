@@ -6,7 +6,7 @@ import './css/bootstrap.min.css';
 import './css/style.css';
 
 import Header from './components/Header';
-import Navbar from './components/Navbar';
+import Navbar from './components/NavBar';
 import Carousel from './components/Carousel';
 import ModalFade from './components/ModalFade';
 import About from './components/About';

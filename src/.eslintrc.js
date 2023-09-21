@@ -30,5 +30,6 @@ module.exports = {
   'rules': {
     'linebreak-style': ['off'],
     'react/react-in-jsx-scope': ['off'],
+    'jsx-a11y/anchor-has-content': ['off'],
   },
 };
