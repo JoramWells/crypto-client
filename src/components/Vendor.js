@@ -1,4 +1,4 @@
-import vendor1 from '../img/vendor-1.jpg';
+import vendor from '../img/vendor-1.jpg';
 import vendor2 from '../img/vendor-2.jpg';
 import vendor3 from '../img/vendor-3.jpg';
 import vendor4 from '../img/vendor-4.jpg';
@@ -15,7 +15,7 @@ const Vendor = () => {
       <div className="container py-2 mb-5">
         <div className="bg-white">
           <div className="owl-carousel vendor-carousel">
-            <img src={vendor1} alt="vendor1" />
+            <img src={vendor} alt="vendor1" />
             <img src={vendor2} alt="vendor2" />
             <img src={vendor3} alt="vendor3" />
             <img src={vendor4} alt="vendor4" />

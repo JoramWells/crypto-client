@@ -1,4 +1,3 @@
-import React from 'react';
 
 const Footer = () => {
   return (
@@ -26,15 +25,16 @@ const Footer = () => {
                   <p className="mb-0">+018 345 67890</p>
                 </div>
                 <div className="d-flex mt-4">
-                  {/* <a className="btn btn-primary btn-square
-                   me-2" href="#"><i className="fab
+                  <a className="btn btn-primary btn-square
+                   me-2" href="www"><i className="fab
                     fa-twitter fw-normal" /></a>
-                <a className="btn btn-primary btn-square me-2"
-                href="#"><i className="fab fa-facebook-f fw-normal" /></a>
-                <a className="btn btn-primary btn-square me-2"
-                href="#"><i className="fab fa-linkedin-in fw-normal" /></a>
-                <a className="btn btn-primary btn-square"
-                 href="#"><i className="fab fa-instagram fw-normal" /></a> */}
+                  <a className="btn btn-primary btn-square me-2"
+                    href="www"><i className="fab fa-facebook-f fw-normal" /></a>
+                  <a className="btn btn-primary btn-square me-2"
+                    href="www"><i className="fab
+                    fa-linkedin-in fw-normal" /></a>
+                  <a className="btn btn-primary btn-square"
+                    href="www"><i className="fab fa-instagram fw-normal" /></a>
                 </div>
               </div>
               <div className="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -44,23 +44,23 @@ const Footer = () => {
                 </div>
                 <div className="link-animated d-flex
                 flex-column justify-content-start">
-                  {/* <a className="text-light mb-2" href="#"><i
-                  className="bi bi-arrow-right text-primary me-2" />Home</a>
-                <a className="text-light mb-2" href="#"><i className="bi
+                  <a className="text-light mb-2" href="www"><i
+                    className="bi bi-arrow-right text-primary me-2" />Home</a>
+                  <a className="text-light mb-2" href="www"><i className="bi
                 bi-arrow-right text-primary me-2" />About Us</a>
-                <a className="text-light mb-2" href="#">
-                <i className="bi bi-arrow-right text-primary
+                  <a className="text-light mb-2" href="www">
+                    <i className="bi bi-arrow-right text-primary
                 me-2" />Our Services</a>
-                <a className="text-light mb-2" href="#">
-                <i className="bi bi-arrow-right
+                  <a className="text-light mb-2" href="www">
+                    <i className="bi bi-arrow-right
                 text-primary me-2" />Meet The Team</a>
-                <a className="text-light mb-2" href="#">
-                <i
-                className="bi bi-arrow-right
+                  <a className="text-light mb-2" href="www">
+                    <i
+                      className="bi bi-arrow-right
                 text-primary me-2" />Latest Blog</a>
-                <a className="text-light"
-                 href="#"><i className="bi
-                 bi-arrow-right text-primary me-2" />Contact Us</a> */}
+                  <a className="text-light"
+                    href="www"><i className="bi
+                 bi-arrow-right text-primary me-2" />Contact Us</a>
                 </div>
               </div>
               <div className="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -70,22 +70,22 @@ const Footer = () => {
                 </div>
                 <div className="link-animated
                 d-flex flex-column justify-content-start">
-                  {/* <a className="text-light mb-2" href="#"><i
-                  className="bi bi-arrow-right text-primary me-2" />Home</a>
-                <a className="text-light mb-2" href="#">
-                <i className="bi bi-arrow-right text-primary me-2" />
+                  <a className="text-light mb-2" href="www"><i
+                    className="bi bi-arrow-right text-primary me-2" />Home</a>
+                  <a className="text-light mb-2" href="www">
+                    <i className="bi bi-arrow-right text-primary me-2" />
                 About Us</a>
-                <a className="text-light mb-2" href
-                i className="bi bi-arrow-right text-primary
-                me-2" />Our Services</a>
-                <a className="text-light mb-2" href="#">
-                <i className="bi bi-arrow-right text-primary me-2"
-                 />Meet The Team</a>
-                <a className="text-light mb-2" href="#"><i
-                className="bi bi-arrow-right
+                  <a className="text-light mb-2" href="www">
+                    <i className="bi bi-arrow-right text-primary me-2"
+                    />Our Services</a>
+                  <a className="text-light mb-2" href="www">
+                    <i className="bi bi-arrow-right text-primary me-2"
+                    />Meet The Team</a>
+                  <a className="text-light mb-2" href="www"><i
+                    className="bi bi-arrow-right
                 text-primary me-2" />Latest Blog</a>
-                <a className="text-light" href="#"><i className="bi
-                bi-arrow-right text-primary me-2" />Contact Us</a> */}
+                  <a className="text-light" href="www"><i className="bi
+                bi-arrow-right text-primary me-2" />Contact Us</a>
                 </div>
               </div>
             </div>
@@ -100,10 +100,10 @@ const Footer = () => {
           <div className="col-lg-8 col-md-6">
             <div className="d-flex align-items-center
             justify-content-center" style={{height: '75px'}}>
-              {/* <p className="mb-0">© <a className="text-white
-              border-bottom" href="#" />All Rights Reserved.  */}
+              <p className="mb-0">© <a className="text-white
+              border-bottom" href="www" />All Rights Reserved.
               {/* /*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. *** /*/}
-              {/* powerd by Crypto Investment Podium 2023</p> */}
+              powerd by Crypto Investment Podium 2023</p>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import carousel1 from '../img/carousel-1.jpeg';
+import carousel2 from '../img/about2.jpeg';
 
 const Carousel = () => {
   return (
@@ -22,7 +23,7 @@ const Carousel = () => {
           </div>
         </div>
         <div className="carousel-item">
-          <img className="w-100" src="img/about2.jpeg" alt="Imageabout" />
+          <img className="w-100" src={carousel2} alt="Imageabout" />
           <div className="carousel-caption d-flex
           flex-column align-items-center justify-content-center">
             <div className="p-3" style={{maxWidth: '900px'}}>

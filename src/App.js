@@ -32,19 +32,6 @@ function App() {
         {/* Google Web Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-        {/* <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" /> */}
-        {/* Icon Font Stylesheet */}
-        {/* <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" /> */}
-        {/* <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" /> */}
-        {/* Libraries Stylesheet */}
-        {/* <link href="./lib/owlcarousel/assets/owl.carousel.min.css"
-          rel="stylesheet" /> */}
-        {/* <link href="./lib/animate/animate.min.css" rel="stylesheet" /> */}
-        {/* Customized Bootstrap Stylesheet */}
-        {/* <link href="./css/bootstrap.min.css" rel="stylesheet" /> */}
-        {/* Template Stylesheet */}
-        {/* <link href="./css/style.css" rel="stylesheet" /> */}
-        {/* Spinner Start */}
       </Helmet>
       <div id="spinner" className="show
       bg- position-fixed translate-middle w-100
@@ -85,9 +72,9 @@ function App() {
       <Footer />
       {/* Footer End */}
       {/* Back to Top */}
-      {/* <a href="#" className="btn btn-lg btn-primary
+      <a href="www" className="btn btn-lg btn-primary
       btn-lg-square rounded back-to-top">
-      <i className="bi bi-arrow-up" /></a> */}
+        <i className="bi bi-arrow-up" /></a>
       {/* JavaScript Libraries */}
       {/* Template Javascript */}
     </div >
