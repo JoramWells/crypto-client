@@ -1,7 +1,7 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
 import Header from '../components/Header';
-import NavBar from '../components/NavBar';
+import CustomNavbar from '../components/CustomNavbar';
 import About from '../components/About';
 import Carousel from '../components/Carousel';
 
@@ -39,7 +39,7 @@ const Index = () => {
       <Header />
       {/* Topbar End */}
       {/* Navbar & Carousel Start */}
-      <NavBar />
+      <CustomNavbar />
       {/* Navbar & Carousel End */}
       <Carousel />
       {/* Full Screen Search Start */}

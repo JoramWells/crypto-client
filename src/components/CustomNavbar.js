@@ -1,7 +1,7 @@
 import {Nav, Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
-const NavBar = () => {
+const CustomNavbar = () => {
   return (
 
     <Navbar expand='lg' bg='dark' sticky='top' className="px-5 py-2 py-lg-0">
@@ -40,4 +40,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default CustomNavbar;
