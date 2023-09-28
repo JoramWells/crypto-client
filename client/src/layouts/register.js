@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 
+import axios from 'axios';
 import {useState} from 'react';
 
 const Register = () => {
@@ -13,8 +14,13 @@ const Register = () => {
     username: username,
     password: password,
   };
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
+    await axios.post('http://localhost:5000/auth/register', inputValues)
+        .then((response)=>{
+          console.log(response);
+        })
+        .catch((err)=>console.log(err.message));
     console.log(inputValues);
   };
 
