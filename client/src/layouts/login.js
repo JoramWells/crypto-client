@@ -1,16 +1,9 @@
-import {Helmet} from 'react-helmet';
 import {Link} from 'react-router-dom';
 
 const Login = () => {
   return (
     <div>
-      <Helmet>
-        <meta charSet="UTF-8" />
-        <title>Crypto Investment Podium</title>
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="./style.css" />
-      </Helmet>
+
       <div className="box-form">
         <div className="left">
           <div className="overlay">
