@@ -18,7 +18,7 @@ import Register from './layouts/register';
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Index />} />
+      <Route exact path='/' element={<Index />} />
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
 
