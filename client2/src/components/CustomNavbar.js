@@ -1,7 +1,27 @@
+/* eslint-disable no-unused-vars */
+import {useCallback, useEffect, useState} from 'react';
 import {Nav, Navbar} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import DropDownMenu from './DropDownMenu';
 
 const CustomNavbar = () => {
+  const [userData, setUserData] = useState({});
+
+  const navigate = useNavigate();
+
+
+  const getUserData = useCallback( async () =>{
+    const userDetails = localStorage.getItem('registeredUser');
+    if (userDetails) {
+      setUserData(await JSON.parse(userDetails));
+      console.log(JSON.parse(userDetails));
+      setUserData(JSON.parse(userDetails));
+    }
+  }, []);
+
+  useEffect(()=>{
+    getUserData();
+  }, [getUserData]);
   return (
 
     <Navbar expand='lg' bg='dark' sticky='top' className="px-5 py-2 py-lg-0">
@@ -21,26 +41,37 @@ const CustomNavbar = () => {
         color: 'white',
       }}>
         <a href="index.html" className="nav-item
-          nav-link active"><i className="fa fa-home" /></a>
+          nav-link active"
+        style={{
+          color: 'white',
+        }}
+        ><i className="fa fa-home" /></a>
         <Nav.Link href='#acion1' style={{
           color: 'white',
         }}>About Us</Nav.Link>
         <Nav.Link href='#acion1' style={{
           color: 'white',
         }}>How to Join</Nav.Link>
-        <Nav.Link href='#acion1'>Contact</Nav.Link>
+        <Nav.Link href='#acion1' style={{
+          color: 'white',
+        }}>Contact</Nav.Link>
       </Nav>
       <button type="button" className="btn text-primary ms-3"
         data-bs-toggle="modal" data-bs-target="#searchModal">
         <i className="fa fa-search" /></button>
-      <a href="login.html" className="btn btn-primary
-        py-2 px-4 ms-3"><i className="fa fa-user"> </i>
+      {localStorage.getItem('registeredUser') ?
+      <DropDownMenu color={'white'} profileName={userData.email}
+        localStorageString={'registeredUser'}
+      /> : <div className="btn btn-primary
+      py-2 px-4 ms-3"><i className="fa fa-user"> </i>
         <Link style={{
           color: 'white',
           marginLeft: '5px',
-        }} to={'/login'}>Join Now</Link>
+        }} to={'/login'}
+        >Join Now</Link>
 
-      </a>
+      </div>}
+
       {/* </div> */}
     </Navbar>
   );

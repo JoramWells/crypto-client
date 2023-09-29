@@ -1,36 +1,55 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 
 import axios from 'axios';
-import {useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import '../css/signuppg.css';
+import {useNavigate} from 'react-router-dom';
+import {UserContext} from '../context/userContext';
+import {useRegisterApi} from '../hooks/useRegisterApi';
 
 const Register = () => {
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
+  const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  // const [loading, setLoading] = useState(false);
+
+  const {registerUser, loading} = useRegisterApi();
+
+  const navigate = useNavigate();
+
+
+  const {user, saveUser} = useContext(UserContext);
+
 
   const inputValues = {
     email: email,
-    username: username,
+    userName: userName,
     password: password,
   };
-  const handleSubmit = async (e) =>{
-    e.preventDefault();
-    await axios.post('http://localhost:5000/auth/register', inputValues)
-        .then((response)=>{
-          console.log(response);
-        })
-        .catch((err)=>console.log(err.message));
-    console.log(inputValues);
-  };
+
+  useEffect(()=>{
+    if (user && user.userName.length > 0) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
 
   return (
-    <div>
-      <title>Create Crypto Account</title>
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      width: '80%',
+      marginLeft: '10%',
+    }}>
 
-      <div className="box-form">
+      <div className="box-form" style={{
+        width: '50%',
+
+      }}>
         <div className="left">
           <div className="overlay">
             <h1>Easly way to Invest.</h1>
@@ -47,16 +66,16 @@ const Register = () => {
           <legend><a href="index.php"><i style={{color: '#fff'}} className="fa fa-home" /></a> <i style={{color: '#fff'}} className="fa fa-user" /></legend>
           {/* ?php global $nam; echo $nam; ?*/}
           {/* ?php global $error; echo $error; ?*/}
-          <form className="myform-validation" noValidate>
+          <div className="myform-validation">
             <div className="inputs">
+              <br />
+              <input type="text" placeholder="user name"
+                value={userName}
+                onChange={(e)=>setUserName(e.target.value)}
+              />
               <input type="text" placeholder="Email"
                 value={email}
                 onChange={(e)=>setEmail(e.target.value)}
-              />
-              <br />
-              <input type="text" placeholder="user name"
-                value={username}
-                onChange={(e)=>setUsername(e.target.value)}
               />
               <br />
               <input type="password"
@@ -72,8 +91,8 @@ const Register = () => {
                 onChange={(e)=>setConfirmPassword(e.target.value)}
               />
             </div><br />
-            <button onClick={handleSubmit} type="submit" name="submit">SignUp</button>
-          </form>
+            <button onClick={() => registerUser(inputValues)} type="submit" name="submit">{loading? 'Loading...' : 'SignUp'}</button>
+          </div>
         </div>
       </div>
       {/* partial */}

@@ -31,6 +31,8 @@ import {
 } from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import DropDownMenu from '../DropDownMenu';
+import axios from 'axios';
 
 const drawerWidth = 240;
 
@@ -85,6 +87,8 @@ export default function AdminPanel({children}) {
   const [open, setOpen] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  const [data, setData] = React.useState([]);
+
   const navigate = useNavigate();
   const toggleDrawer = () => {
     setOpen(!open);
@@ -94,6 +98,20 @@ export default function AdminPanel({children}) {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const getData = async () => {
+    await axios.get('http://localhost:5000/auth/getAllUsers')
+        .then((response)=>{
+          setData(response.data);
+          console.log(response.data);
+        })
+        .catch((err)=>console.log(err.message));
+    const studentData = localStorage.getItem('studentData');
+    const data = JSON.parse(studentData);
+    // if (data) {
+    //   setStudentInfo(data.data);
+    // }
   };
 
   // main list
@@ -109,13 +127,13 @@ export default function AdminPanel({children}) {
         <ListItemIcon>
           <ShoppingCartIcon />
         </ListItemIcon>
-        <ListItemText primary="Students" />
+        <ListItemText primary="Investments" />
       </ListItemButton>
       <ListItemButton>
         <ListItemIcon>
           <PeopleIcon />
         </ListItemIcon>
-        <ListItemText primary="Primary" />
+        <ListItemText primary="Deposits" />
       </ListItemButton>
       <ListItemButton>
         <ListItemIcon>
@@ -162,12 +180,15 @@ export default function AdminPanel({children}) {
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{display: 'flex'}}>
         <CssBaseline />
-        <CssBaseline />
 
-        <AppBar position="absolute" open={open}>
+
+        <AppBar position="absolute" open={open} style={{
+          backgroundColor: '#090b6f85',
+        }}>
           <Toolbar
             sx={{
-              pr: '24px', // keep right padding when drawer closed
+              pr: '24px',
+              backgroundColor: '#090b6f85', // keep right padding when drawer closed
             }}
           >
             <IconButton
@@ -192,31 +213,13 @@ export default function AdminPanel({children}) {
             >
               Dashboard
             </Typography>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{flexGrow: 1}}
-              onClick={() => navigate('/add-student')}
-            >
-              Add Student
-            </Typography>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{flexGrow: 1}}
-              onClick={() => navigate('/add-subject')}
-            >
-              Add Subject
-            </Typography>
+
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
+            <DropDownMenu />
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>

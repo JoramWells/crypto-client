@@ -24,55 +24,66 @@ const Login = () => {
 
   return (
 
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        width: '80%',
+        marginLeft: '10%',
+      }}
+    >
 
-    <div className="box-form">
-      <div className="left">
-        <div className="overlay">
-          <h1>Easly way to Invest.</h1>
-          <p>When you invest with Crypto Investment Podium.<br />
+      <div className="box-form">
+        <div className="left">
+          <div className="overlay">
+            <h1>Easly way to Invest.</h1>
+            <p>When you invest with Crypto Investment Podium.<br />
               Your money is safe.<br />
               SignUp or Login to have an account with us.</p>
+            <p>Dont have an account?
+              <span>
+
+                <Link to={'/register'}
+                  className="fa fa-pen">Create Account</Link>
+
+              </span>
+            </p></div>
+        </div>
+        <div className="right">
+          <h5>Login</h5>
           <p>Dont have an account?
-            <span>
-
-              <Link to={'/register'}
-                className="fa fa-pen">Create Account</Link>
-
-            </span>
-          </p></div>
-      </div>
-      <div className="right">
-        <h5>Login</h5>
-        <p>Dont have an account?
-          <Link to={'/register'}>Create Your Account</Link>
+            <Link to={'/register'}>Create Your Account</Link>
             it takes less than a minute</p>
-        <p>{/* ?php global $nam; echo $nam; ?*/}<br />
-          {/* ?php global $error; echo $error; ?*/}</p>
-        <form id="myform">
-          <div className="inputs">
-            <input type="email" name="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+          <p>{/* ?php global $nam; echo $nam; ?*/}<br />
+            {/* ?php global $error; echo $error; ?*/}</p>
+          <form id="myform">
+            <div className="inputs">
+              <input type="email" name="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <br />
+              <input type="password"
+                name="password"
+                placeholder="password"
+                value={password}
+                onChange={(e)=> setPassword(e.target.value)}
+              />
+            </div><br />
+            <div className="remember-me--forget-password">
+              <label>
+                <input type="checkbox" name="item" defaultChecked />
+                <span className="text-checkbox">Remember me</span>
+              </label>
+              <p>forget password?</p>
+            </div>
             <br />
-            <input type="password"
-              name="password"
-              placeholder="password"
-              value={password}
-              onChange={(e)=> setPassword(e.target.value)}
-            />
-          </div><br />
-          <div className="remember-me--forget-password">
-            <label>
-              <input type="checkbox" name="item" defaultChecked />
-              <span className="text-checkbox">Remember me</span>
-            </label>
-            <p>forget password?</p>
-          </div>
-          <br />
-          <button onClick={handleLogin} name="login">Login</button>
-        </form>
+            <button onClick={handleLogin} name="login">Login</button>
+          </form>
+        </div>
       </div>
     </div>
   );
