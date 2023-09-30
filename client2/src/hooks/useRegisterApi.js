@@ -1,6 +1,7 @@
 import {useContext, useState} from 'react';
 import axios from 'axios';
 import {UserContext} from '../context/userContext';
+import {toast} from 'react-toastify';
 
 axios.defaults.baseURL = 'http://localhost:5000/auth';
 
@@ -13,23 +14,26 @@ export const useRegisterApi = () => {
   const {user, saveUser} = useContext(UserContext);
 
   // register user
-  const registerUser = async (inputValues) =>{
+  const registerUser = async (inputValues) => {
     setLoading(true);
     await axios.post('/register', inputValues)
-        .then((response)=>{
-          const {_id, userName, email, gender, age, createdAt} = response.data;
+        .then((response) => {
+          const {_id, userName, email, gender, age,
+            deposit, createdAt} = response.data;
           saveUser({
             id: _id,
             userName,
             email,
             gender,
             age,
+            deposit,
             createdAt,
           });
           localStorage.setItem('registeredUser', JSON.stringify(response.data));
-          // navigate('/');
+          toast('Registered Account Succesfully');
+        // navigate('/');
         })
-        .catch((err)=>{
+        .catch((err) => {
           setError(err.message);
         });
     setLoading(false);

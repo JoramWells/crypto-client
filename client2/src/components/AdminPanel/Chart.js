@@ -1,6 +1,7 @@
 /* eslint-disable require-jsdoc */
 import * as React from 'react';
 import {useTheme} from '@mui/material/styles';
+import PropTypes from 'prop-types';
 import {
   LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer,
 } from 'recharts';
@@ -23,12 +24,12 @@ const data = [
   createData('24:00', undefined),
 ];
 
-export default function Chart() {
+export default function Chart({title}) {
   const theme = useTheme();
 
   return (
     <>
-      <Title>Today</Title>
+      <Title>{title? title: 'Today'}</Title>
       <ResponsiveContainer>
         <LineChart
           data={data}
@@ -72,3 +73,7 @@ export default function Chart() {
     </>
   );
 }
+
+Chart.propTypes = {
+  title: PropTypes.string,
+};

@@ -11,6 +11,7 @@ const UserContextProvider = ({children}) => {
     email: '',
     gender: '',
     age: '',
+    deposit: 0.0,
     createdAt: new Date(),
   });
 
@@ -21,6 +22,7 @@ const UserContextProvider = ({children}) => {
       email: user.email,
       gender: user.gender,
       age: user.age,
+      deposit: user.deposit,
       createdAt: user.createdAt,
     };
     setUser(newUser);

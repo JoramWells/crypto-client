@@ -14,7 +14,7 @@
   align-items: stretch;
   justify-content: space-between;
   box-shadow: 0 0 20px 6px #090b6f85;
-  /* height: 80%; */
+  height: 80%;
 }
 @media (max-width: 980px) {
   .box-form {
@@ -34,7 +34,7 @@
   background-image: url("../img/backg.jpg");
   overflow: hidden;
 }
-.box-form .left .overlay {
+.box-form  .overlay {
   padding: 30px;
   width: 100%;
   height: 100%;

@@ -3,10 +3,39 @@
 
 import axios from 'axios';
 import {useContext, useEffect, useState} from 'react';
-import '../css/signuppg.css';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {UserContext} from '../context/userContext';
 import {useRegisterApi} from '../hooks/useRegisterApi';
+import {ToastContainer} from 'react-toastify';
+import AuthContainer from '../components/AuthContainer';
+import {Typography} from '@material-ui/core';
+
+
+const button = {
+  // float: 'right',
+  color: '#fff',
+  fontSize: '16px',
+  padding: '12px 35px',
+  borderRadius: '50px',
+  // display: 'inline-block',
+  border: '0',
+  outline: '0',
+  boxShadow: '0px 4px 20px 0px #49c628a6',
+  backgroundImage: 'linear-gradient(135deg, #70F570 10%, #49C628 100%)',
+  margin: 'auto',
+  display: 'block',
+  width: '80%',
+};
+
+const input = {
+  width: '100%',
+  padding: 'auto',
+  marginTop: '25px',
+  fontSize: '16px',
+  border: 'none',
+  outline: 'none',
+  borderBottom: '2px solid #B0B3B9',
+};
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -37,66 +66,52 @@ const Register = () => {
 
 
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100vh',
-      width: '80%',
-      marginLeft: '10%',
-    }}>
+    <AuthContainer>
+      <div className="right">
+        <Typography variant='h1'>SignUp</Typography>
 
-      <div className="box-form" style={{
-        width: '50%',
-
-      }}>
-        <div className="left">
-          <div className="overlay">
-            <h1>Easly way to Invest.</h1>
-            <p>When you invest with Crypto Investment Podium.
-            Your money is safe.<br />Login to access Your account.</p>
-            <span>
-              <a href="Login.html"><i className="fa fa-o" aria-hidden="true" /> LogIn</a>
-            </span>
-          </div>
-        </div>
-        <div className="right">
-          <h5>SignUp</h5>
-          <p>Already have an account? <a href="login.html">Login</a> provide your login details</p>
-          <legend><a href="index.php"><i style={{color: '#fff'}} className="fa fa-home" /></a> <i style={{color: '#fff'}} className="fa fa-user" /></legend>
-          {/* ?php global $nam; echo $nam; ?*/}
-          {/* ?php global $error; echo $error; ?*/}
-          <div className="myform-validation">
-            <div className="inputs">
-              <br />
-              <input type="text" placeholder="user name"
-                value={userName}
-                onChange={(e)=>setUserName(e.target.value)}
-              />
-              <input type="text" placeholder="Email"
-                value={email}
-                onChange={(e)=>setEmail(e.target.value)}
-              />
-              <br />
-              <input type="password"
-                className="form-control"
-                id="password" placeholder="Password"
-                name="password"
-                value={password}
-                onChange={(e)=>setPassword(e.target.value)}
-                required />
-              <input id="confirm_password" type="password"
-                name="password" placeholder="Confirm Password"
-                value={confirmPassword}
-                onChange={(e)=>setConfirmPassword(e.target.value)}
-              />
-            </div><br />
-            <button onClick={() => registerUser(inputValues)} type="submit" name="submit">{loading? 'Loading...' : 'SignUp'}</button>
-          </div>
+        <div style={{
+          width: '100%',
+          marginTop: '5rem',
+        }} >
+          <div style={{
+            width: '95%',
+            display: 'block',
+            margin: 'auto',
+          }}>
+            <input type="text" placeholder="user name"
+              value={userName}
+              onChange={(e)=>setUserName(e.target.value)}
+              style={input}
+            />
+            <input type="text" placeholder="Email"
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
+            />
+            <br />
+            <input type="password"
+              className="form-control"
+              id="password" placeholder="Password"
+              name="password"
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
+              required />
+            <input id="confirm_password" type="password"
+              name="password" placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e)=>setConfirmPassword(e.target.value)}
+            />
+          </div><br />
+          <button style={button}
+            onClick={() => registerUser(inputValues)} type="submit" name="submit">{loading? 'Loading...' : 'SignUp'}</button>
         </div>
       </div>
-      {/* partial */}
-    </div>
+      <p style={{
+        color: 'grey',
+        marginTop: '2rem',
+      }}>Already have an account,
+        <Link to={'/login'}> Sign In?</Link></p>
+    </AuthContainer>
   );
 };
 

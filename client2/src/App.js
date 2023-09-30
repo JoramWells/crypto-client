@@ -14,12 +14,14 @@ import Account from './layouts/account';
 import AdminPanel from './components/AdminPanel';
 import HomeDashboard from './components/AdminPanel/HomeDashboard';
 import UserContextProvider from './context/userContext';
+import {CssBaseline} from '@material-ui/core';
 
 
 // eslint-disable-next-line require-jsdoc
 function App() {
   return (
     <UserContextProvider>
+      <CssBaseline />
       <Routes>
         <Route exact path='/' element={<Index />} />
         <Route path='/login' element={<Login />} />

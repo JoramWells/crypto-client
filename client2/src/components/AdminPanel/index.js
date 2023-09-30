@@ -25,14 +25,18 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
+import SettingsApplicationsOutlinedIcon from '@mui/icons-material/SettingsApplicationsOutlined';
+
 
 import {
+  Avatar,
   ListItemButton, ListItemIcon, ListItemText, ListSubheader,
 } from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import DropDownMenu from '../DropDownMenu';
 import axios from 'axios';
+import {UserContext} from '../../context/userContext';
 
 const drawerWidth = 240;
 
@@ -83,7 +87,7 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function AdminPanel({children}) {
+export default function AdminPanel({children, avatar}) {
   const [open, setOpen] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -113,6 +117,23 @@ export default function AdminPanel({children}) {
     //   setStudentInfo(data.data);
     // }
   };
+
+  const [userData, setUserData] = React.useState({});
+
+
+  const {user} = React.useContext(UserContext);
+
+  const getUserData = () => {
+    const userDetails = localStorage.getItem('registeredUser');
+    return JSON.parse(userDetails);
+  };
+
+
+  React.useEffect(()=>{
+    const user = getUserData();
+    setUserData(user);
+    console.log(userData, 'datax');
+  }, []);
 
   // main list
   const mainListItems = (
@@ -173,6 +194,74 @@ export default function AdminPanel({children}) {
         </ListItemIcon>
         <ListItemText primary="Year-end sale" />
       </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon>
+          <AssignmentIcon />
+        </ListItemIcon>
+        <ListItemText primary="Settings" />
+      </ListItemButton>
+    </>
+  );
+
+  const userListItems = (
+    <>
+      <ListSubheader component="div" inset>
+        Saved reports
+      </ListSubheader>
+      <div style={{
+        fontSize: '12px',
+      }}>
+        <ListItemButton >
+          <ListItemIcon>
+            <AssignmentIcon />
+          </ListItemIcon>
+          <ListItemText primary="Investments" />
+        </ListItemButton>
+        <ListItemButton>
+          <ListItemIcon>
+            <AssignmentIcon />
+          </ListItemIcon>
+          <ListItemText primary="Deposits" />
+        </ListItemButton>
+        <ListItemButton>
+          <ListItemIcon>
+            <AssignmentIcon />
+          </ListItemIcon>
+          <ListItemText primary="Bitcoin Prices" />
+        </ListItemButton>
+        <ListItemButton>
+          <ListItemIcon>
+            <AssignmentIcon />
+          </ListItemIcon>
+          <ListItemText primary="Games" />
+        </ListItemButton>
+        <ListItemButton>
+          <ListItemIcon>
+            <AssignmentIcon />
+          </ListItemIcon>
+          <ListItemText primary="Profits" />
+        </ListItemButton>
+      </div>
+      <div style={{
+        position: 'fixed',
+        bottom: '0',
+        width: '15%',
+      }}>
+        <ListItemButton >
+          <ListItemIcon>
+            <SettingsApplicationsOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Settings" />
+        </ListItemButton>
+        <ListItemButton style={{
+          textAlign: 'center',
+          backgroundColor: '#FFC5C5',
+          color: 'white',
+          fontWeight: 'bold',
+        }}>
+          <ListItemText primary="Delete Account" />
+        </ListItemButton>
+      </div>
     </>
   );
 
@@ -237,9 +326,55 @@ export default function AdminPanel({children}) {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
+            {avatar ? <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <Avatar
+                sx={{
+                  width: '150px',
+                  height: '150px',
+                  objectFit: 'contain',
+                }}
+                src="https://www.citypng.com/public/uploads/preview/png-profile-user-round-gray-icon-symbol-11639594342slkdqxcgi6.png?v=2023082006"
+                alt="user-avatar" />
+
+              <div style={{
+                marginTop: '.5rem',
+                fontSize: '20px',
+                fontWeight: 'bold',
+              }}>{userData.userName}</div>
+              <div style={{
+                marginTop: '.5rem',
+                fontSize: '14px',
+                fontWeight: 'bold',
+                color: 'grey',
+              }}>{userData.email}</div>
+              <button
+                style={{
+                  marginTop: '.5rem',
+                  marginBottom: '.5rem',
+                  border: '0',
+                  outline: 'none',
+                  backgroundColor: '#090b6f85',
+                  padding: '5px',
+                  width: '80%',
+                  borderRadius: '5px',
+                  color: 'white',
+
+                }}
+              >Edit profile</button>
+
+            </div>: <>{mainListItems}</> }
+
+
             <Divider sx={{my: 1}} />
-            {secondaryListItems}
+            {avatar ? userListItems: secondaryListItems}
+            {/* {secondaryListItems} */}
           </List>
         </Drawer>
         <Box
@@ -269,4 +404,5 @@ export default function AdminPanel({children}) {
 AdminPanel.propTypes = {
   // eslint-disable-next-line react/require-default-props
   children: PropTypes.node,
+  avatar: PropTypes.string,
 };

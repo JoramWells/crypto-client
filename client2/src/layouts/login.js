@@ -2,11 +2,40 @@ import '../css/styless.css';
 import {useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-
+import {Typography} from '@material-ui/core';
+import AuthContainer from '../components/AuthContainer';
 // const Container = styled.div`
 
 
 // `
+
+
+const button = {
+  // float: 'right',
+  color: '#fff',
+  fontSize: '16px',
+  padding: '12px 35px',
+  borderRadius: '50px',
+  // display: 'inline-block',
+  border: '0',
+  outline: '0',
+  boxShadow: '0px 4px 20px 0px #49c628a6',
+  backgroundImage: 'linear-gradient(135deg, #70F570 10%, #49C628 100%)',
+  margin: 'auto',
+  display: 'block',
+  width: '80%',
+};
+
+const input = {
+  width: '100%',
+  padding: 'auto',
+  marginTop: '25px',
+  fontSize: '16px',
+  border: 'none',
+  outline: 'none',
+  borderBottom: '2px solid #B0B3B9',
+};
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,68 +53,66 @@ const Login = () => {
 
   return (
 
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        width: '80%',
-        marginLeft: '10%',
-      }}
-    >
+    <AuthContainer>
 
-      <div className="box-form">
-        <div className="left">
-          <div className="overlay">
-            <h1>Easly way to Invest.</h1>
-            <p>When you invest with Crypto Investment Podium.<br />
-              Your money is safe.<br />
-              SignUp or Login to have an account with us.</p>
-            <p>Dont have an account?
-              <span>
+      <Typography variant='h1'>Login</Typography>
 
-                <Link to={'/register'}
-                  className="fa fa-pen">Create Account</Link>
 
-              </span>
-            </p></div>
+      <div style={{
+        width: '100%',
+        marginTop: '5rem',
+      }} >
+        <div style={{
+          width: '95%',
+          display: 'block',
+          margin: 'auto',
+        }}>
+          <input type="email" name="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            style={input}
+          />
+          <br />
+          <input type="password"
+            name="password"
+            placeholder="password"
+            value={password}
+            onChange={(e)=> setPassword(e.target.value)}
+            style={input}
+          />
+        </div><br />
+        <div style={{
+          marginTop: '.3rem',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '10px',
+        }} className="remember-me--forget-password">
+          <label style={{
+            // display: 'flex',
+            // justifyContent: 'center',
+            // alignItems: 'center',
+          }}>
+            <input type="checkbox" name="item" defaultChecked />
+            <span className="text-checkbox">Remember me</span>
+          </label>
+          <p style={{
+            marginTop: '1.5rem',
+          }}>forget password?</p>
         </div>
-        <div className="right">
-          <h5>Login</h5>
-          <p>Dont have an account?
-            <Link to={'/register'}>Create Your Account</Link>
-            it takes less than a minute</p>
-          <p>{/* ?php global $nam; echo $nam; ?*/}<br />
-            {/* ?php global $error; echo $error; ?*/}</p>
-          <form id="myform">
-            <div className="inputs">
-              <input type="email" name="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <br />
-              <input type="password"
-                name="password"
-                placeholder="password"
-                value={password}
-                onChange={(e)=> setPassword(e.target.value)}
-              />
-            </div><br />
-            <div className="remember-me--forget-password">
-              <label>
-                <input type="checkbox" name="item" defaultChecked />
-                <span className="text-checkbox">Remember me</span>
-              </label>
-              <p>forget password?</p>
-            </div>
-            <br />
-            <button onClick={handleLogin} name="login">Login</button>
-          </form>
-        </div>
+        <br />
+        <button style={button}
+          onClick={handleLogin} name="login">Login</button>
+
       </div>
-    </div>
+      <p style={{
+        color: 'grey',
+        marginTop: '2rem',
+      }}>Dont have an account,
+        <Link to={'/register'}> Create Your Account?</Link></p>
+    </AuthContainer>
+
   );
 };
 
